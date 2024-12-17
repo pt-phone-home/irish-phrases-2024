@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+
+    <title>Irish Phrases Home</title>
+</head>
+<body class="pt-2">
+    <div id="navbar"></div>
+    <section class="bg-dark text-light p-4 text-center text-sm-start">
+        <div class="container">
+            <div class="d-sm-flex align-items-center justify-content-between">
+                <div>
+                    <h1>Database of <span class="text-warning">Irish Phrases</span></h1>
+                    <p class="lead my-4">This website provides a searchable database of over 11,000 phrases, searchable in Irish and English.</p>
+                    <p class="lead my-4">Looking for inspiration? Click the 'discover' button below to get some random phrases from the database</p>
+                    <a class="btn btn-primary btn-lg" id="get-random">Discover</a>
+                </div>
+                <img class="img-fluid w-25 d-none d-sm-block" src="/images/header_image.png" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="bg-primary text-light p-5">
+        <div class="container">
+            <div class="d-md-flex justify-content-around align-items-center">
+                <div class="w-100">
+                    <h3 class="mb-3 mb-md-0">Search the database</h3>
+                    <p>Enter words or phrases in Irish or English</p>
+                </div>
+                <div class="w-100 w-sm-100">
+                    <form id="search-form">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search the database" id="searchTerm">
+                            <button class="btn btn-dark btn-lg" type="submit" id="button-addon2">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="p-5 bg-light" id="random">
+        <div id="spinner">
+            <div class="d-flex justify-content-center align-items-center" 
+                    style="height: 20vh;">
+                <div class="spinner-border text-primary" role="status"></div>
+            </div>
+        </div>
+        <div class="container">
+            <!-- <div class="row mb-2">
+                <div class="col text-center">
+                    <h2 class="d-inline-block">Example Phrases (refresh page for more)</h2> 
+                    <a class="btn btn-primary d-block w-25" href="">Click for more!</a>
+                </div>
+                
+            </div> -->
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3" id ='for-paint-dom'>
+                    <!-- Intert Phrases here with Javascript -->
+            </div>
+        </div>
+    </section>
+    <div id="footer"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
