@@ -93,6 +93,7 @@ function onFormSubmit(e) {
   divForPhrases.innerHTML = "";
 
   fetchAllData(searchTerm);
+  document.getElementById("searchTerm").value = "";
 }
 
 function showSpinner() {
