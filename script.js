@@ -32,6 +32,24 @@ function fetchRandomPhrases() {
   }, 600);
 }
 
+function fetchAllData(searchTerm) {
+  showSpinner();
+  setTimeout(() => {
+    fetch("./Phrases_2024_utf8.json")
+      .then((response) => {
+        return response.json();
+      })
+      .then((phrases) => {
+        const fuse = new Fuse(phrases, options);
+
+        let result = fuse.search(searchTerm);
+        result = result.map((entry) => entry.item);
+        hideSpinner();
+        fillDOM(result);
+      });
+  }, 600);
+}
+
 function fillDOM(data) {
   // const cleanedData = data.map((entry) => entry.item);
   data.forEach((phrase) => {
@@ -65,24 +83,6 @@ const options = {
   threshold: 0.4,
   useExtendedSearch: true,
 };
-
-function fetchAllData(searchTerm) {
-  showSpinner();
-  setTimeout(() => {
-    fetch("./Phrases_2024_utf8.json")
-      .then((response) => {
-        return response.json();
-      })
-      .then((phrases) => {
-        const fuse = new Fuse(phrases, options);
-
-        let result = fuse.search(searchTerm);
-        result = result.map((entry) => entry.item);
-        hideSpinner();
-        fillDOM(result);
-      });
-  }, 600);
-}
 
 function onFormSubmit(e) {
   e.preventDefault();
