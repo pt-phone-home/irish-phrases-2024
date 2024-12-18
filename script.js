@@ -9,8 +9,11 @@ async function loadIncludes() {
 const form = document.getElementById("search-form");
 const divForPhrases = document.getElementById("for-paint-dom");
 const randomBtn = document.getElementById("get-random");
+const fillerDiv = document.getElementById("filler");
+const noResultsDiv = document.getElementById("no-results");
 
 function fetchRandomPhrases() {
+  hideFiller();
   divForPhrases.innerHTML = "";
   showSpinner();
   setTimeout(() => {
@@ -44,6 +47,11 @@ function fetchAllData(searchTerm) {
 
         let result = fuse.search(searchTerm);
         result = result.map((entry) => entry.item);
+        if (result.length === 0) {
+          hideFiller();
+          hideSpinner();
+          showNoResults();
+        }
         hideSpinner();
         fillDOM(result);
       });
@@ -51,7 +59,7 @@ function fetchAllData(searchTerm) {
 }
 
 function fillDOM(data) {
-  // const cleanedData = data.map((entry) => entry.item);
+  hideFiller();
   data.forEach((phrase) => {
     const div = document.createElement("div");
     div.setAttribute("data-id", phrase.id);
@@ -89,6 +97,7 @@ function onFormSubmit(e) {
   const searchTerm = document.getElementById("searchTerm").value;
   if (searchTerm === "") {
     alert("Please enter some text");
+    return;
   }
   divForPhrases.innerHTML = "";
 
@@ -104,10 +113,25 @@ function hideSpinner() {
   document.querySelector("#spinner").style.display = "none";
 }
 
+function showFiller() {
+  fillerDiv.style.display = "block";
+}
+function hideFiller() {
+  fillerDiv.style.display = "none";
+}
+function showNoResults() {
+  noResultsDiv.style.display = "block";
+}
+function hideNoResults() {
+  noResultsDiv.style.display = "none";
+}
+
 function init() {
   loadIncludes();
   // fetchRandomPhrases();
   hideSpinner();
+  showFiller();
+  hideNoResults();
 }
 
 init();
