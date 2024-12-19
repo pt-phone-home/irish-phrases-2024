@@ -36,6 +36,7 @@ function fetchRandomPhrases() {
 }
 
 function fetchAllData(searchTerm) {
+  hideNoResults();
   showSpinner();
   setTimeout(() => {
     fetch("./Phrases_2024_utf8.json")
