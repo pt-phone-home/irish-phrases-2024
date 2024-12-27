@@ -84,9 +84,7 @@ function checkAnswer(selected, correct) {
         ? (button.style.backgroundColor = "green")
         : (button.style.backgroundColor = "red");
     });
-    setTimeout(() => {
-      score++;
-    }, 1000);
+    score++;
   }
   currentIndex++;
 
