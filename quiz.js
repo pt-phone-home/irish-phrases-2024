@@ -45,19 +45,14 @@ function displayQuestions() {
 
   // Generate options
   const correctAnswer = phrase.english;
-  let wrongAnswers = currentQuiz.filter((phrase) => {
-    return phrase.english !== correctAnswer;
-  });
+  const wrongAnswers = currentQuiz
+    .filter((phrase) => {
+      return phrase.english !== correctAnswer;
+    })
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 2)
+    .map((p) => p.english);
 
-  const a = Math.floor(Math.random() * wrongAnswers.length) + 1;
-  const b = Math.floor(Math.random() * wrongAnswers.length) + 1;
-  const c = Math.floor(Math.random() * wrongAnswers.length) + 1;
-
-  wrongAnswers = [
-    wrongAnswers[a].english,
-    wrongAnswers[b].english,
-    wrongAnswers[c].english,
-  ];
   const options = [correctAnswer, ...wrongAnswers].sort(
     () => 0.5 - Math.random()
   );
@@ -66,7 +61,7 @@ function displayQuestions() {
   options.forEach((option) => {
     const button = document.createElement("button");
     button.textContent = option;
-    button.addEventListener("click", checkAnswer(option, correctAnswer));
+    button.addEventListener("click", () => checkAnswer(option, correctAnswer));
     optionsDiv.appendChild(button);
   });
 }
