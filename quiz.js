@@ -1,10 +1,19 @@
 const startQuiz = document.getElementById("startQuiz");
+const quitQuiz = document.getElementById("quitQuiz");
 const quizContainer = document.getElementById("quizContainer");
 const irishPhrase = document.getElementById("irishPhrase");
 const optionsDiv = document.getElementById("options");
+const scorePage = document.getElementById("scorePage");
 let currentQuiz = [];
 let currentIndex = 0;
 let score = 0;
+
+function beginQuiz() {
+  scorePage.style.display = "none";
+  startQuiz.style.display = "none";
+  quitQuiz.style.display = "block";
+  getQuizPhrases();
+}
 
 async function getQuizPhrases() {
   const response = await fetch("./Phrases_2024_utf8.json");
@@ -36,10 +45,10 @@ async function getQuizPhrases() {
   currentIndex = 0;
   score = 0;
   quizContainer.style.display = "block";
-  displayQuestions();
+  displayQuestion();
 }
 
-function displayQuestions() {
+function displayQuestion() {
   const phrase = currentQuiz[currentIndex];
   irishPhrase.textContent = phrase.irish;
 
@@ -66,9 +75,38 @@ function displayQuestions() {
   });
 }
 
-function checkAnswer() {
-  console.log("Checking answer... ");
+function checkAnswer(selected, correct) {
+  if (selected === correct) {
+    let buttons = document.getElementById("options").children;
+    buttons = Array.from(buttons);
+    buttons.forEach((button) => {
+      button.textContent === correct
+        ? (button.style.backgroundColor = "green")
+        : (button.style.backgroundColor = "red");
+    });
+    setTimeout(() => {
+      score++;
+    }, 1000);
+  }
+  currentIndex++;
+
+  if (currentIndex < currentQuiz.length) {
+    displayQuestion();
+  } else {
+    endQuiz();
+  }
+}
+
+function endQuiz() {
+  quizContainer.style.display = "none";
+  scorePage.style.display = "block";
+  document.getElementById("score").textContent = score;
+}
+
+function closeQuiz() {
+  console.log("Closing quiz");
 }
 
 // Event listeners
-startQuiz.addEventListener("click", getQuizPhrases);
+startQuiz.addEventListener("click", beginQuiz);
+quitQuiz.addEventListener("click", closeQuiz);
