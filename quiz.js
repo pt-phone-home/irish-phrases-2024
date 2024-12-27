@@ -69,6 +69,10 @@ function displayQuestion() {
   optionsDiv.innerHTML = "";
   options.forEach((option) => {
     const button = document.createElement("button");
+    button.classList.add("btn");
+    button.classList.add("btn-outline");
+    button.classList.add("btn-outline-secondary");
+
     button.textContent = option;
     button.addEventListener("click", () => checkAnswer(option, correctAnswer));
     optionsDiv.appendChild(button);
