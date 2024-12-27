@@ -1,6 +1,7 @@
 const startQuiz = document.getElementById("startQuiz");
 const quizContainer = document.getElementById("quizContainer");
 const irishPhrase = document.getElementById("irishPhrase");
+const optionsDiv = document.getElementById("options");
 let currentQuiz = [];
 let currentIndex = 0;
 let score = 0;
@@ -44,6 +45,34 @@ function displayQuestions() {
 
   // Generate options
   const correctAnswer = phrase.english;
+  let wrongAnswers = currentQuiz.filter((phrase) => {
+    return phrase.english !== correctAnswer;
+  });
+
+  const a = Math.floor(Math.random() * wrongAnswers.length) + 1;
+  const b = Math.floor(Math.random() * wrongAnswers.length) + 1;
+  const c = Math.floor(Math.random() * wrongAnswers.length) + 1;
+
+  wrongAnswers = [
+    wrongAnswers[a].english,
+    wrongAnswers[b].english,
+    wrongAnswers[c].english,
+  ];
+  const options = [correctAnswer, ...wrongAnswers].sort(
+    () => 0.5 - Math.random()
+  );
+
+  optionsDiv.innerHTML = "";
+  options.forEach((option) => {
+    const button = document.createElement("button");
+    button.textContent = option;
+    button.addEventListener("click", checkAnswer(option, correctAnswer));
+    optionsDiv.appendChild(button);
+  });
+}
+
+function checkAnswer() {
+  console.log("Checking answer... ");
 }
 
 // Event listeners
