@@ -1,5 +1,6 @@
 const startQuiz = document.getElementById("startQuiz");
 const quizContainer = document.getElementById("quizContainer");
+const irishPhrase = document.getElementById("irishPhrase");
 let currentQuiz = [];
 let currentIndex = 0;
 let score = 0;
@@ -31,14 +32,19 @@ async function getQuizPhrases() {
     phrases[i],
     phrases[j],
   ];
-  console.log(currentQuiz);
   currentIndex = 0;
   score = 0;
   quizContainer.style.display = "block";
   displayQuestions();
 }
 
-function displayQuestions() {}
+function displayQuestions() {
+  const phrase = currentQuiz[currentIndex];
+  irishPhrase.textContent = phrase.irish;
+
+  // Generate options
+  const correctAnswer = phrase.english;
+}
 
 // Event listeners
 startQuiz.addEventListener("click", getQuizPhrases);
