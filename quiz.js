@@ -84,30 +84,11 @@ function checkAnswer(selected, correct) {
   let buttons = document.getElementById("options").children;
   buttons = Array.from(buttons);
   if (selected === correct) {
-    buttons.forEach((button) => {
-      if (button.textContent === correct) {
-        button.classList.remove("btn-outline-secondary");
-        button.classList.remove("btn-outline");
-        button.classList.add("btn-success");
-      } else {
-        button.classList.remove("btn-outline-secondary");
-        button.classList.remove("btn-outline");
-        button.classList.add("btn-danger");
-      }
-    });
+    changeButtonsOnAnswer(buttons, correct);
+
     score++;
   } else {
-    buttons.forEach((button) => {
-      if (button.textContent === correct) {
-        button.classList.remove("btn-outline-secondary");
-        button.classList.remove("btn-outline");
-        button.classList.add("btn-success");
-      } else {
-        button.classList.remove("btn-outline-secondary");
-        button.classList.remove("btn-outline");
-        button.classList.add("btn-danger");
-      }
-    });
+    changeButtonsOnAnswer(buttons, correct);
   }
   //   TODO change the part above so that it a) changes colour on incorrect answer, and b) extract this into a separate
   // function that takes care of the changes.
@@ -124,7 +105,19 @@ function checkAnswer(selected, correct) {
   }
 }
 
-function changeButtonsOnAnswer(buttons) {}
+function changeButtonsOnAnswer(buttonsArray, correctAnswer) {
+  buttonsArray.forEach((button) => {
+    if (button.textContent === correctAnswer) {
+      button.classList.remove("btn-outline-secondary");
+      button.classList.remove("btn-outline");
+      button.classList.add("btn-success");
+    } else {
+      button.classList.remove("btn-outline-secondary");
+      button.classList.remove("btn-outline");
+      button.classList.add("btn-danger");
+    }
+  });
+}
 
 function endQuiz() {
   quizContainer.style.display = "none";
