@@ -12,6 +12,7 @@ let score = 0;
 
 function beginQuiz() {
   scorePage.style.display = "none";
+  startQuiz.classList.remove("d-inline-block");
   startQuiz.style.display = "none";
   quitQuiz.classList.add("d-inline-block");
   document.getElementById("startQuizText").style.display = "none";
