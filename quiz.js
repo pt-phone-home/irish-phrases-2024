@@ -88,6 +88,10 @@ function checkAnswer(selected, correct) {
         button.classList.remove("btn-outline-secondary");
         button.classList.remove("btn-outline");
         button.classList.add("btn-success");
+      } else {
+        button.classList.remove("btn-outline-secondary");
+        button.classList.remove("btn-outline");
+        button.classList.add("btn-danger");
       }
     });
     score++;
