@@ -84,18 +84,26 @@ function checkAnswer(selected, correct) {
     let buttons = document.getElementById("options").children;
     buttons = Array.from(buttons);
     buttons.forEach((button) => {
-      button.textContent === correct
-        ? (button.style.backgroundColor = "green")
-        : (button.style.backgroundColor = "red");
+      if (button.textContent === correct) {
+        button.classList.remove("btn-outline-secondary");
+        button.classList.remove("btn-outline");
+        button.classList.add("btn-success");
+      }
     });
     score++;
   }
+  //   TODO change the part above so that it a) changes colour on incorrect answer, and b) extract this into a separate
+  // function that takes care of the changes.
   currentIndex++;
 
   if (currentIndex < currentQuiz.length) {
-    displayQuestion();
+    setTimeout(() => {
+      displayQuestion();
+    }, 1000);
   } else {
-    endQuiz();
+    setTimeout(() => {
+      endQuiz();
+    }, 1000);
   }
 }
 
