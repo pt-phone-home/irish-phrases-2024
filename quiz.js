@@ -68,15 +68,7 @@ function displayQuestion() {
 
   optionsDiv.innerHTML = "";
   options.forEach((option) => {
-    const button = document.createElement("button");
-    button.classList.add("btn");
-    button.classList.add("btn-outline");
-    button.classList.add("btn-outline-secondary");
-    button.classList.add("mb-2");
-
-    button.textContent = option;
-    button.addEventListener("click", () => checkAnswer(option, correctAnswer));
-    optionsDiv.appendChild(button);
+    createOptionsButton(option, correctAnswer);
   });
 }
 
@@ -90,8 +82,7 @@ function checkAnswer(selected, correct) {
   } else {
     changeButtonsOnAnswer(buttons, correct);
   }
-  //   TODO change the part above so that it a) changes colour on incorrect answer, and b) extract this into a separate
-  // function that takes care of the changes.
+
   currentIndex++;
 
   if (currentIndex < currentQuiz.length) {
@@ -117,6 +108,18 @@ function changeButtonsOnAnswer(buttonsArray, correctAnswer) {
       button.classList.add("btn-danger");
     }
   });
+}
+
+function createOptionsButton(option, correctAnswer) {
+  const button = document.createElement("button");
+  button.classList.add("btn");
+  button.classList.add("btn-outline");
+  button.classList.add("btn-outline-secondary");
+  button.classList.add("mb-2");
+
+  button.textContent = option;
+  button.addEventListener("click", () => checkAnswer(option, correctAnswer));
+  optionsDiv.appendChild(button);
 }
 
 function endQuiz() {
