@@ -109,8 +109,6 @@ function checkAnswer(selected, correct) {
       }
     });
   }
-
-  function changeButtonsOnAnswer(buttons) {}
   //   TODO change the part above so that it a) changes colour on incorrect answer, and b) extract this into a separate
   // function that takes care of the changes.
   currentIndex++;
@@ -125,6 +123,8 @@ function checkAnswer(selected, correct) {
     }, 1000);
   }
 }
+
+function changeButtonsOnAnswer(buttons) {}
 
 function endQuiz() {
   quizContainer.style.display = "none";
