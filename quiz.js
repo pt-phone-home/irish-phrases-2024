@@ -11,7 +11,9 @@ let score = 0;
 function beginQuiz() {
   scorePage.style.display = "none";
   startQuiz.style.display = "none";
-  quitQuiz.style.display = "block";
+  quitQuiz.classList.add("d-inline-block");
+  document.getElementById("startQuizText").style.display = "none";
+  document.getElementById("startQuizTextDescription").style.display = "none";
   getQuizPhrases();
 }
 
@@ -129,7 +131,13 @@ function endQuiz() {
 }
 
 function closeQuiz() {
-  console.log("Closing quiz");
+  currentQuiz = [];
+  currentIndex = 0;
+  score = 0;
+  quizContainer.style.display = "none";
+  scorePage.style.display = "none";
+  startQuiz.style.display = "block";
+  quitQuiz.style.display = "none";
 }
 
 // Event listeners
