@@ -84,7 +84,6 @@ function checkAnswer(selected, correct) {
   let buttons = document.getElementById("options").children;
   buttons = Array.from(buttons);
   if (selected === correct) {
-    changeButtonsOnAnswer(buttons);
     buttons.forEach((button) => {
       if (button.textContent === correct) {
         button.classList.remove("btn-outline-secondary");
