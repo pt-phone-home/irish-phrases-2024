@@ -116,11 +116,11 @@ function checkAnswer(selected, correct) {
   if (currentIndex < currentQuiz.length) {
     setTimeout(() => {
       displayQuestion();
-    }, 1000);
+    }, 2000);
   } else {
     setTimeout(() => {
       endQuiz();
-    }, 1000);
+    }, 2000);
   }
 }
 
