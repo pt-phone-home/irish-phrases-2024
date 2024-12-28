@@ -72,6 +72,7 @@ function displayQuestion() {
     button.classList.add("btn");
     button.classList.add("btn-outline");
     button.classList.add("btn-outline-secondary");
+    button.classList.add("mb-2");
 
     button.textContent = option;
     button.addEventListener("click", () => checkAnswer(option, correctAnswer));
@@ -80,9 +81,10 @@ function displayQuestion() {
 }
 
 function checkAnswer(selected, correct) {
+  let buttons = document.getElementById("options").children;
+  buttons = Array.from(buttons);
   if (selected === correct) {
-    let buttons = document.getElementById("options").children;
-    buttons = Array.from(buttons);
+    changeButtonsOnAnswer(buttons);
     buttons.forEach((button) => {
       if (button.textContent === correct) {
         button.classList.remove("btn-outline-secondary");
@@ -95,7 +97,21 @@ function checkAnswer(selected, correct) {
       }
     });
     score++;
+  } else {
+    buttons.forEach((button) => {
+      if (button.textContent === correct) {
+        button.classList.remove("btn-outline-secondary");
+        button.classList.remove("btn-outline");
+        button.classList.add("btn-success");
+      } else {
+        button.classList.remove("btn-outline-secondary");
+        button.classList.remove("btn-outline");
+        button.classList.add("btn-danger");
+      }
+    });
   }
+
+  function changeButtonsOnAnswer(buttons) {}
   //   TODO change the part above so that it a) changes colour on incorrect answer, and b) extract this into a separate
   // function that takes care of the changes.
   currentIndex++;
