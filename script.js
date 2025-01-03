@@ -1,11 +1,3 @@
-async function loadIncludes() {
-  const header = await (await fetch("navbar.html")).text();
-  document.getElementById("navbar").innerHTML = header;
-
-  const footer = await (await fetch("footer.html")).text();
-  document.getElementById("footer").innerHTML = footer;
-}
-
 const form = document.getElementById("search-form");
 const divForPhrases = document.getElementById("for-paint-dom");
 const randomBtn = document.getElementById("get-random");
@@ -128,7 +120,6 @@ function hideNoResults() {
 }
 
 function init() {
-  loadIncludes();
   // fetchRandomPhrases();
   hideSpinner();
   showFiller();

@@ -1,3 +1,4 @@
+const quizFillerDiv = document.getElementById("quiz-filler");
 const startQuiz = document.getElementById("startQuiz");
 const quitQuiz = document.getElementById("quitQuiz");
 const quizContainer = document.getElementById("quizContainer");
@@ -11,9 +12,11 @@ let score = 0;
 // TODO figure out how to get the start quiz and end quiz buttons displaying correctly
 
 function beginQuiz() {
+  quizFillerDiv.style.display = "none";
   scorePage.style.display = "none";
   startQuiz.classList.remove("d-inline-block");
-  startQuiz.style.display = "none";
+  startQuiz.classList.add("d-none");
+  quitQuiz.classList.remove("d-none");
   quitQuiz.classList.add("d-inline-block");
   document.getElementById("startQuizText").style.display = "none";
   document.getElementById("startQuizTextDescription").style.display = "none";
@@ -139,8 +142,10 @@ function closeQuiz() {
   score = 0;
   quizContainer.style.display = "none";
   scorePage.style.display = "none";
-  startQuiz.style.display = "block";
-  quitQuiz.style.display = "none";
+  startQuiz.classList.remove("d-none");
+  startQuiz.classList.add("d-inline-block");
+  quitQuiz.classList.add("d-none");
+  quizFillerDiv.style.display = "block";
 }
 
 // Event listeners

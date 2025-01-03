@@ -12,8 +12,21 @@
 </head>
 <!-- TODO this about how to include header and footer in a more performant way -->
 <body class="pt-2">
-    <div id="navbar"></div>
-    <section class="bg-dark text-light p-4 text-center text-sm-start mt-5">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 fixed-top">
+        <div class="container">
+          <a href="/" class="navbar-brand">Irish Phrases</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a href="/quiz.html" class="nav-link">Test your knowledge</a>
+              </li>
+            </ul>
+          </div>     
+        </div>
+      </nav>    <section class="bg-dark text-light p-4 text-center text-sm-start mt-5">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div>
@@ -71,8 +84,13 @@
             </div>
         </div>
     </section>
-    <div id="footer"></div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <footer class="p-5 bg-dark text-white text-center position-relative " id="contact">
+        <div class="container">
+            <p class="lead text-muted">Developed by Peter Tiernan</p>
+            <p class="lead text-muted">If you notice any errors or have any suggestions, please email me peter.d.tiernan@dcu.ie</p>
+
+        </div>
+    </footer>    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>
