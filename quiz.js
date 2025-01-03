@@ -19,6 +19,7 @@ function beginQuiz() {
   quitQuiz.classList.add("d-inline-block");
   document.getElementById("startQuizText").style.display = "none";
   document.getElementById("startQuizTextDescription").style.display = "none";
+  quitQuiz.innerText = "Reset Quiz";
   getQuizPhrases();
 }
 
@@ -135,7 +136,7 @@ function endQuiz() {
   quizFillerDiv.classList.remove("d-none");
   quizFillerDiv.classList.add("d-block");
   document.getElementById("score").textContent = score;
-  // quitQuiz.innerText = "Start again";
+  quitQuiz.innerText = "Start again";
 }
 
 function closeQuiz() {
