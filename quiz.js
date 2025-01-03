@@ -9,8 +9,6 @@ let currentQuiz = [];
 let currentIndex = 0;
 let score = 0;
 
-// TODO figure out how to get the start quiz and end quiz buttons displaying correctly
-
 function beginQuiz() {
   quizFillerDiv.classList.remove("d-block");
   quizFillerDiv.classList.add("d-none");
