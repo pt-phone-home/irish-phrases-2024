@@ -12,7 +12,8 @@ let score = 0;
 // TODO figure out how to get the start quiz and end quiz buttons displaying correctly
 
 function beginQuiz() {
-  quizFillerDiv.style.display = "none";
+  quizFillerDiv.classList.remove("d-block");
+  quizFillerDiv.classList.add("d-none");
   scorePage.style.display = "none";
   startQuiz.classList.remove("d-inline-block");
   startQuiz.classList.add("d-none");
@@ -133,7 +134,10 @@ function createOptionsButton(option, correctAnswer) {
 function endQuiz() {
   quizContainer.style.display = "none";
   scorePage.style.display = "block";
+  quizFillerDiv.classList.remove("d-none");
+  quizFillerDiv.classList.add("d-block");
   document.getElementById("score").textContent = score;
+  // quitQuiz.innerText = "Start again";
 }
 
 function closeQuiz() {
@@ -145,7 +149,10 @@ function closeQuiz() {
   startQuiz.classList.remove("d-none");
   startQuiz.classList.add("d-inline-block");
   quitQuiz.classList.add("d-none");
-  quizFillerDiv.style.display = "block";
+  quizFillerDiv.classList.remove("d-none");
+  quizFillerDiv.classList.add("d-block");
+  document.getElementById("startQuizText").style.display = "block";
+  document.getElementById("startQuizTextDescription").style.display = "block";
 }
 
 // Event listeners
